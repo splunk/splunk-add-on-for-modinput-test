@@ -10,9 +10,6 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         elif self.customAction == "create":
             self.supportedArgs.addReqArg('file_path')
             self.supportedArgs.addReqArg('data')
-        elif self.customAction == "copy":
-            self.supportedArgs.addReqArg('copy_from')
-            self.supportedArgs.addReqArg('copy_to')
         return
 
     def handleCustom(self, confInfo):
@@ -22,20 +19,26 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.read_file(confInfo)
         elif self.customAction == 'create':
             self.create_file(confInfo)
-        elif self.customAction == 'copy':
-            self.copy_file(confInfo)
     
     def delete_file(self, confInfo):
-        checkpoint_file_path = self.callerArgs.data['file_path'][0]
-        if os.path.exists(checkpoint_file_path):
-            os.remove(checkpoint_file_path)
+        file_path = self.callerArgs.data['file_path'][0]
+        if os.path.exists(file_path):
+            os.remove(file_path)
+            confInfo['success_message'] = ('success_message', 'File {} successfully deleted'.format(file_path))
+
+        else:
+            confInfo['error_message'] = ('delete_error_message', 'File {} not found'.format(file_path))
 
     def read_file(self, confInfo):
-        checkpoint_file_path = self.callerArgs.data['file_path'][0]
-        if os.path.exists(checkpoint_file_path):
-            with open(checkpoint_file_path, 'r') as ckpt_file:
+        file_path = self.callerArgs.data['file_path'][0]
+
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as ckpt_file:
                 file_content = ckpt_file.read()
-            confInfo['ckpt_file_content'] = ('file_content', file_content)
+            confInfo['file_content'] = ('file_content', file_content)
+
+        else:
+            confInfo['error_message'] = ('read_error_message', "File {} not found.".format(file_path))
 
     def create_file(self, confInfo):
         conf_file_path = self.callerArgs.data['file_path'][0]
@@ -45,17 +48,6 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             os.makedirs(path_to_local)
         with open(conf_file_path, "w") as conf_file_obj:
                 conf_file_obj.write(conf_file_data)
-
-    def copy_file(self, confInfo):
-        copy_from_file = self.callerArgs.data['copy_from'][0]
-        copy_to_file = self.callerArgs.data['copy_to'][0]
-        path_to_local = "/".join(conf_file_path.split("/")[:-1])
-        if not os.path.exists(path_to_local):
-            os.makedirs(path_to_local)
-        with open(copy_from_file, "r") as readConfFile:
-            conf_content = readConfFile.read()
-            with open(copy_to_file, "w") as writeConfFile:
-                writeConfFile.write(conf_content)
 
 
 if __name__ == "__main__":
