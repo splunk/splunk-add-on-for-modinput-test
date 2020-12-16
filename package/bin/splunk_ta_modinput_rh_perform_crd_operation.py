@@ -33,7 +33,7 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         file_path = self.callerArgs.data['file_path'][0]
 
         if os.path.exists(file_path):
-            with open(file_path, 'r') as ckpt_file:
+            with open(file_path, 'rb') as ckpt_file:
                 file_content = ckpt_file.read()
             confInfo['file_content'] = ('file_content', file_content)
 
