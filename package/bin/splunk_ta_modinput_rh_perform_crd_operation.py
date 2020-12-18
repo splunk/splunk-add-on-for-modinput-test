@@ -35,7 +35,7 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         if os.path.exists(file_path):
             with open(file_path, 'rb') as ckpt_file:
                 file_content = ckpt_file.read()
-            confInfo['file_content'] = ('file_content', file_content.decode())
+            confInfo['file_content'] = ('file_content', file_content.decode("utf-8"))
 
         else:
             confInfo['error_message'] = ('read_error_message', "File {} not found.".format(file_path))
