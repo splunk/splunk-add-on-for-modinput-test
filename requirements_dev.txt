@@ -6,7 +6,7 @@
 splunk-add-on-ucc-framework==4.2.0
 lovely-pytest-docker==0.2.0
 reuse==0.12.1
-pytest==6.2.1
+pytest==6.2.2
 https://download.splunk.com/misc/packaging-toolkit/splunk-packaging-toolkit-1.0.1.tar.gz
 pytest-xdist==2.2.0
 pytest-ordering==0.6
