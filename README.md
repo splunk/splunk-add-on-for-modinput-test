@@ -43,7 +43,7 @@ Splunk add-on for modinput test created to use the Splunk's custom rest API to h
 
 > **Note:** The file content is present under entry[0].get("content").get("file_content") while `output_mode` is set as `json`.
 
-Please follow the bellowed python script for better understanding.
+Please follow the below python script for better understanding.
 
 ```python
 import requests
@@ -61,4 +61,4 @@ payload = {"file_path": FILE_PATH}
 response = requests.request("DELETE", delete_file_url, auth=(USERNAME, PASSWORD), data=payload, verify=False)
 ```
 
-> **Note:** `<entry>` in the URL is Splunk's interpretation way to differentiate the Splunk's default API with custom rest API. It is static and remain same for all the file actions scenarios.
+> **Note:** `<entry>` in the URL is Splunk's interpretation way to differentiate the Splunk's default API with custom rest API. It is static and "should remain the same" for all the file actions scenarios.
