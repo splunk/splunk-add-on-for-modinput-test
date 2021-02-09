@@ -1,8 +1,8 @@
-#
-# SPDX-FileCopyrightText: 2020 Splunk, Inc. <sales@splunk.com>
-# SPDX-License-Identifier: LicenseRef-Splunk-1-2020
-#
-#
+##
+## SPDX-FileCopyrightText: 2020 Splunk, Inc. <sales@splunk.com>
+## SPDX-License-Identifier: LicenseRef-Splunk-1-2020
+##
+##
 import os
 import pytest
 pytest_plugins = "pytester"

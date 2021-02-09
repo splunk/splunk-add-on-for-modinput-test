@@ -1,8 +1,8 @@
-#
-# SPDX-FileCopyrightText: 2020 Splunk, Inc. <sales@splunk.com>
-# SPDX-License-Identifier: LicenseRef-Splunk-1-2020
-#
-#
+##
+## SPDX-FileCopyrightText: 2020 Splunk, Inc. <sales@splunk.com>
+## SPDX-License-Identifier: LicenseRef-Splunk-1-2020
+##
+##
 import pytest
 
 from pytest_splunk_addon.standard_lib.addon_basic import Basic
