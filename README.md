@@ -25,7 +25,7 @@ Splunk add-on for modinput test created to use the Splunk's custom rest API to h
 
 #### Required params:
 
-- **file_path**: The path of file which want to delete along with file name
+- **file_path**: The path of file  which want to delete along with file name
 
 #### Request Type: DELETE
 
