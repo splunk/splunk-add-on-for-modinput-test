@@ -539,10 +539,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - checkout
-      - run:
-          name: "Apply Release Tag"
-          command: |
-            npx semantic-release 
+      - run: npx semantic-release
 
   publish-sbase:
     docker:
@@ -705,6 +702,10 @@ workflows:
             - approval-release
           context:
             - gdi-github
+          filters:
+            tags:
+              only: /^v\d*\.\d*\.\d*$/
+
   publish:
     jobs:
       - splunk-app-package/package:
