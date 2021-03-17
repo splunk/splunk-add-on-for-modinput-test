@@ -6,6 +6,8 @@ branches:
     channel: beta
     prerelease: true
 tagFormat:
+  - "v${version}"
+  - /^v\d*\.\d*\.\d*$/
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
