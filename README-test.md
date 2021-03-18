@@ -1,5 +1,5 @@
 
-# Run Addon  tests in local environment
+# Run Addon tests in local environment
 
 ## With Docker
 
