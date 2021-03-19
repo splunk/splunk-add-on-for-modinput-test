@@ -5,7 +5,7 @@ branches:
   - name: develop
     channel: beta
     prerelease: true
-tagFormat:
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
+  - "@semantic-release/github"
