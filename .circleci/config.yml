@@ -542,7 +542,25 @@ jobs:
       - run:
           name: "Apply Release Tag"
           command: |
-            npx semantic-release 
+            npx semantic-release
+
+  publish-gh:
+    docker:
+      - image: circleci/python:3.7
+    steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - go/install
+      - run:
+          name: "Publish on GitHub"
+          command: |
+            PATH=$PATH:/usr/local/go/bin
+            go get -v -u github.com/tcnksm/ghr
+            $HOME/go/bin/ghr -t ${GH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -replace "<< pipeline.git.tag >>" /tmp/workspace/build/package/splunkbase
+            $HOME/go/bin/ghr -t ${GH_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -replace "<< pipeline.git.tag >>" /tmp/workspace/build/package/deployment
 
   publish-sbase:
     docker:
@@ -686,12 +704,12 @@ workflows:
       - approval-release:
           requires:
             - package
-            - splunk-app-inspect
-            - splunk-app-test-knowledge
-            - splunk-app-test-ui
-            - splunk-app-test-modinput
-            - splunk-app-unit-test
-            - splunk-app-backend-test
+            # - splunk-app-inspect
+            # - splunk-app-test-knowledge
+            # - splunk-app-test-ui
+            # - splunk-app-test-modinput
+            # - splunk-app-unit-test
+            # - splunk-app-backend-test
           context:
             - gdi-github
           type: approval
@@ -709,6 +727,16 @@ workflows:
     jobs:
       - splunk-app-package/package:
           name: package
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v\d*\.\d*\.\d*.*$/
+      - publish-gh:
+          context:
+            - gdi-github
+          requires:
+            - package
           filters:
             branches:
               ignore: /.*/
