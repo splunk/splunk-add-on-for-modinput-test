@@ -19,7 +19,7 @@ jobs:
           PERSONAL_ACCESS_TOKEN: 4c10494b8d586e48b036cc612179ea3f8ad961b5
         with:
           path-to-signatures: ".github/signatures/version1/cla.json"
-          path-to-document: "https://github.com/splunk/addonfactory-test-releaseci/blob/main/CLA.md" # e.g. a CLA or a DCO document
+          path-to-document: "CLA.md" # e.g. a CLA or a DCO document
           # branch should not be protected
           branch: "bufgix/cla-assistant"
           allowlist: dependabot
