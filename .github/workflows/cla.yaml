@@ -16,7 +16,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # the below token should have repo scope and must be manually added by you in the repository's secret
-          PERSONAL_ACCESS_TOKEN: 4c10494b8d586e48b036cc612179ea3f8ad961b5
+          PERSONAL_ACCESS_TOKEN: "4c10494b8d586e48b036cc612179ea3f8ad961b5"
         with:
           path-to-signatures: ".github/signatures/version1/cla.json"
           path-to-document: "https://github.com/splunk/addonfactory-test-releaseci/blob/main/CLA.md" # e.g. a CLA or a DCO document
