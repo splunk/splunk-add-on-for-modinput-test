@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "CLA Assistant"
-        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
-        # Alpha Release
+        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA')
+        # Beta Release
         uses: cla-assistant/github-action@v2.1.1-beta
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # the below token should have repo scope and must be manually added by you in the repository's secret
-          PERSONAL_ACCESS_TOKEN: 4c10494b8d586e48b036cc612179ea3f8ad961b5
+          PERSONAL_ACCESS_TOKEN: "4c10494b8d586e48b036cc612179ea3f8ad961b5"
         with:
           path-to-signatures: ".github/signatures/version1/cla.json"
           path-to-document: "CLA.md" # e.g. a CLA or a DCO document
