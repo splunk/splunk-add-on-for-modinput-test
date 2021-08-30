@@ -677,28 +677,21 @@ docker = ["lovely-pytest-docker (>=0,<1)"]
 
 [[package]]
 name = "pytest-splunk-addon-ui-smartx"
-version = "2.0.2"
+version = "2.0.9"
 description = "Library to support testing Splunk Add-on UX"
 category = "dev"
 optional = false
 python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
-configparser = "*"
 cssselect = "*"
 future = ">=0.18,<0.19"
 msedge-selenium-tools = "*"
 pytest-html = "*"
-pytest-splunk-addon = "1.6.1"
+pytest-splunk-addon = ">=1.6,<2.0"
 selenium = "*"
-Sphinx = "*"
-sphinx-panels = "*"
-sphinx_rtd_theme = "*"
-urllib3 = "1.21.1"
+urllib3 = ">=1.21.1,<2.0.0"
 webdriver-manager = "*"
-
-[package.extras]
-docker = ["lovely-pytest-docker (>=0.1.0)"]
 
 [[package]]
 name = "pytest-xdist"
@@ -900,24 +893,6 @@ sphinxcontrib-serializinghtml = ">=1.1.5"
 docs = ["sphinxcontrib-websupport"]
 lint = ["flake8 (>=3.5.0)", "isort", "mypy (>=0.900)", "docutils-stubs", "types-typed-ast", "types-pkg-resources", "types-requests"]
 test = ["pytest", "pytest-cov", "html5lib", "cython", "typed-ast"]
-
-[[package]]
-name = "sphinx-panels"
-version = "0.6.0"
-description = "A sphinx extension for creating panels in a grid layout."
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-docutils = "*"
-sphinx = ">=2,<5"
-
-[package.extras]
-code_style = ["pre-commit (>=2.7.0,<2.8.0)"]
-live-dev = ["sphinx-autobuild", "web-compile (>=0.2.0,<0.3.0)"]
-testing = ["pytest (>=6.0.1,<6.1.0)", "pytest-regressions (>=2.0.1,<2.1.0)"]
-themes = ["sphinx-rtd-theme", "pydata-sphinx-theme (>=0.4.0,<0.5.0)", "sphinx-book-theme (>=0.0.36,<0.1.0)", "myst-parser (>=0.12.9,<0.13.0)"]
 
 [[package]]
 name = "sphinx-rtd-theme"
@@ -1175,7 +1150,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e4ec78a1c0844495316c950f800744d83fabdf1f5a271a9cf5c8a97501070af2"
+content-hash = "83d9e6c5857567352e78b321e34cbbb3b6fa5009c9c1ae94b4d766eb655ef2a5"
 
 [metadata.files]
 alabaster = [
@@ -1577,8 +1552,8 @@ pytest-splunk-addon = [
     {file = "pytest_splunk_addon-1.6.1-py3-none-any.whl", hash = "sha256:511ee5511f7a0e09794cde9b4ec93bdbc870bde918a2cc89de4547f923707c54"},
 ]
 pytest-splunk-addon-ui-smartx = [
-    {file = "pytest-splunk-addon-ui-smartx-2.0.2.tar.gz", hash = "sha256:22be406e2e4dc7d118397e7ea4f166be99cdaf052cb1df406c4405b69ceb452d"},
-    {file = "pytest_splunk_addon_ui_smartx-2.0.2-py3-none-any.whl", hash = "sha256:a9f2471efa41565ea6fc35c1d07a0d465e7e82baf49a9411dc9791f72b64cea7"},
+    {file = "pytest-splunk-addon-ui-smartx-2.0.9.tar.gz", hash = "sha256:5a39ebd4d5277fd2b8c3dfc2d346b68d92e3157e3222d7db77be6bf2d793c95d"},
+    {file = "pytest_splunk_addon_ui_smartx-2.0.9-py3-none-any.whl", hash = "sha256:053424171fdc6fc50cdac16ac04380c47710554983ae5d71e785e7ef52df2b6d"},
 ]
 pytest-xdist = [
     {file = "pytest-xdist-2.3.0.tar.gz", hash = "sha256:e8ecde2f85d88fbcadb7d28cb33da0fa29bca5cf7d5967fa89fc0e97e5299ea5"},
@@ -1684,10 +1659,6 @@ soupsieve = [
 sphinx = [
     {file = "Sphinx-4.1.2-py3-none-any.whl", hash = "sha256:46d52c6cee13fec44744b8c01ed692c18a640f6910a725cbb938bc36e8d64544"},
     {file = "Sphinx-4.1.2.tar.gz", hash = "sha256:3092d929cd807926d846018f2ace47ba2f3b671b309c7a89cd3306e80c826b13"},
-]
-sphinx-panels = [
-    {file = "sphinx-panels-0.6.0.tar.gz", hash = "sha256:d36dcd26358117e11888f7143db4ac2301ebe90873ac00627bf1fe526bf0f058"},
-    {file = "sphinx_panels-0.6.0-py3-none-any.whl", hash = "sha256:bd64afaf85c07f8096d21c8247fc6fd757e339d1be97832c8832d6ae5ed2e61d"},
 ]
 sphinx-rtd-theme = [
     {file = "sphinx_rtd_theme-0.5.2-py2.py3-none-any.whl", hash = "sha256:4a05bdbe8b1446d77a01e20a23ebc6777c74f43237035e76be89699308987d6f"},
