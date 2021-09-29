@@ -177,7 +177,7 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
 name = "dunamai"
-version = "1.6.0"
+version = "1.5.5"
 description = "Dynamic version generation"
 category = "dev"
 optional = false
@@ -459,21 +459,6 @@ python-versions = "*"
 
 [package.dependencies]
 selenium = "3.141"
-
-[[package]]
-name = "munch"
-version = "2.5.0"
-description = "A dot-accessible dictionary (a la JavaScript objects)"
-category = "dev"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-six = "*"
-
-[package.extras]
-testing = ["pytest", "coverage", "astroid (>=1.5.3,<1.6.0)", "pylint (>=1.7.2,<1.8.0)", "astroid (>=2.0)", "pylint (>=2.3.1,<2.4.0)"]
-yaml = ["PyYAML (>=5.1.0)"]
 
 [[package]]
 name = "natsort"
@@ -842,27 +827,6 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "solnlib"
-version = "4.2.0"
-description = "The Splunk Software Development Kit for Splunk Solutions"
-category = "dev"
-optional = false
-python-versions = ">=3.7,<4.0"
-
-[package.dependencies]
-requests = ">=2.24,<3.0"
-sortedcontainers = ">=2.2,<3.0"
-splunk-sdk = "1.6.16"
-
-[[package]]
-name = "sortedcontainers"
-version = "2.4.0"
-description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
-category = "dev"
-optional = false
-python-versions = "*"
-
-[[package]]
 name = "soupsieve"
 version = "2.2.1"
 description = "A modern CSS selector implementation for Beautiful Soup."
@@ -1007,7 +971,7 @@ test = ["pytest"]
 
 [[package]]
 name = "splunk-add-on-ucc-framework"
-version = "5.3.3"
+version = "5.8.2"
 description = "Splunk Add-on SDK formerly UCC is a build and code generation framework"
 category = "dev"
 optional = false
@@ -1015,18 +979,10 @@ python-versions = ">=3.7,<4.0"
 
 [package.dependencies]
 defusedxml = ">=0.7.1,<0.8.0"
-dunamai = "*"
-future = ">=0,<1"
-jinja2 = ">=2,<3"
+dunamai = "1.5.5"
+jinja2 = ">=2,<4"
 jsonschema = ">=3.2.0,<4.0.0"
 lxml = ">=4.3,<5.0"
-mako = ">=1,<2"
-munch = ">=2,<3"
-reuse = "*"
-solnlib = ">=4.1.0,<5.0.0"
-Sphinx = ">=4.0.2,<5.0.0"
-sphinx-rtd-theme = ">=0.5.2,<0.6.0"
-splunktaucclib = ">=5.0.2,<6.0.0"
 
 [[package]]
 name = "splunk-appinspect"
@@ -1076,32 +1032,6 @@ description = "The Splunk Software Development Kit for Python."
 category = "dev"
 optional = false
 python-versions = "*"
-
-[[package]]
-name = "splunktalib"
-version = "2.1.0"
-description = "Supporting library for Splunk Add-ons"
-category = "dev"
-optional = false
-python-versions = ">=3.7,<4.0"
-
-[package.dependencies]
-defusedxml = ">=0,<1"
-httplib2 = ">=0,<1"
-sortedcontainers = ">=2,<3"
-
-[[package]]
-name = "splunktaucclib"
-version = "5.0.4"
-description = ""
-category = "dev"
-optional = false
-python-versions = ">=3.7,<4.0"
-
-[package.dependencies]
-solnlib = ">=4.0.0,<5.0.0"
-splunk-sdk = "1.6.16"
-splunktalib = ">=2.0.0,<3.0.0"
 
 [[package]]
 name = "text-unidecode"
@@ -1175,7 +1105,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "e4ec78a1c0844495316c950f800744d83fabdf1f5a271a9cf5c8a97501070af2"
+content-hash = "4c6dc89901c76359718edade7f0f52375c5be743b80610511c1fa2fcaf0325ad"
 
 [metadata.files]
 alabaster = [
@@ -1252,8 +1182,8 @@ docutils = [
     {file = "docutils-0.16.tar.gz", hash = "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"},
 ]
 dunamai = [
-    {file = "dunamai-1.6.0-py3-none-any.whl", hash = "sha256:44a94a4edebb145bb6198a2f26de957b12b77d43b7c9c0646be814c60cf5d8df"},
-    {file = "dunamai-1.6.0.tar.gz", hash = "sha256:6f1111f47e869ed58d44a7d37f112e3e7c761dce3c71f2c5464526928d7e9896"},
+    {file = "dunamai-1.5.5-py3-none-any.whl", hash = "sha256:525ac30db6ca4f8e48b9f198c2e8fbc2a9ce3ea189768361c621ea635212ee49"},
+    {file = "dunamai-1.5.5.tar.gz", hash = "sha256:32f30db71e8fd1adeb42fac45c04433680e47a28298447cd30304e0bba95a7dd"},
 ]
 execnet = [
     {file = "execnet-1.9.0-py2.py3-none-any.whl", hash = "sha256:a295f7cc774947aac58dde7fdc85f4aa00c42adf5d8f5468fc630c1acf30a142"},
@@ -1448,10 +1378,6 @@ mock = [
 msedge-selenium-tools = [
     {file = "msedge-selenium-tools-3.141.3.tar.gz", hash = "sha256:b6d4adce03770211de9a927edce41672baa6b2f582a969d564e5176631cc8d2b"},
     {file = "msedge_selenium_tools-3.141.3-py3-none-any.whl", hash = "sha256:63e2966d48094239e4d40bdaf9fd1c723698541c90362cf8d810d934cd7334f9"},
-]
-munch = [
-    {file = "munch-2.5.0-py2.py3-none-any.whl", hash = "sha256:6f44af89a2ce4ed04ff8de41f70b226b984db10a91dcc7b9ac2efc1c77022fdd"},
-    {file = "munch-2.5.0.tar.gz", hash = "sha256:2d735f6f24d4dba3417fa448cae40c6e896ec1fdab6cdb5e6510999758a4dbd2"},
 ]
 natsort = [
     {file = "natsort-7.1.1-py3-none-any.whl", hash = "sha256:d0f4fc06ca163fa4a5ef638d9bf111c67f65eedcc7920f98dec08e489045b67e"},
@@ -1669,14 +1595,6 @@ snowballstemmer = [
     {file = "snowballstemmer-2.1.0-py2.py3-none-any.whl", hash = "sha256:b51b447bea85f9968c13b650126a888aabd4cb4463fca868ec596826325dedc2"},
     {file = "snowballstemmer-2.1.0.tar.gz", hash = "sha256:e997baa4f2e9139951b6f4c631bad912dfd3c792467e2f03d7239464af90e914"},
 ]
-solnlib = [
-    {file = "solnlib-4.2.0-py3-none-any.whl", hash = "sha256:11152d8aece1cc1830b311f024e7dede09e36ac56cb1e9c2cf897c788c461ded"},
-    {file = "solnlib-4.2.0.tar.gz", hash = "sha256:d31981768f280a49ed9997672b83231804254fb88a40af347b963c7a63ca0aa4"},
-]
-sortedcontainers = [
-    {file = "sortedcontainers-2.4.0-py2.py3-none-any.whl", hash = "sha256:a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"},
-    {file = "sortedcontainers-2.4.0.tar.gz", hash = "sha256:25caa5a06cc30b6b83d11423433f65d1f9d76c4c6a0c90e3379eaa43b9bfdb88"},
-]
 soupsieve = [
     {file = "soupsieve-2.2.1-py3-none-any.whl", hash = "sha256:c2c1c2d44f158cdbddab7824a9af8c4f83c76b1e23e049479aa432feb6c4c23b"},
     {file = "soupsieve-2.2.1.tar.gz", hash = "sha256:052774848f448cf19c7e959adf5566904d525f33a3f8b6ba6f6f8f26ec7de0cc"},
@@ -1718,8 +1636,8 @@ sphinxcontrib-serializinghtml = [
     {file = "sphinxcontrib_serializinghtml-1.1.5-py2.py3-none-any.whl", hash = "sha256:352a9a00ae864471d3a7ead8d7d79f5fc0b57e8b3f95e9867eb9eb28999b92fd"},
 ]
 splunk-add-on-ucc-framework = [
-    {file = "splunk_add_on_ucc_framework-5.3.3-py3-none-any.whl", hash = "sha256:7831b0e08e9909b2362924f0cd7678dc90af77429c7b5a7f0249bd7638f76dec"},
-    {file = "splunk_add_on_ucc_framework-5.3.3.tar.gz", hash = "sha256:01d0c8c1225ea7ed91c0d74fe2af00ba09c9632321f3b314d02240c472ed633b"},
+    {file = "splunk_add_on_ucc_framework-5.8.2-py3-none-any.whl", hash = "sha256:831a6295fd2d7a64d7de211f8445078d1fcf08a748f3c2196fff989acf51191c"},
+    {file = "splunk_add_on_ucc_framework-5.8.2.tar.gz", hash = "sha256:90caf6a9bfabe983672218130b6615b0a7ad73fbe9b5daf45be6e4c848d52fe1"},
 ]
 splunk-appinspect = [
     {file = "splunk-appinspect-2.7.0.tar.gz", hash = "sha256:bd18f140c109cdcca52468ab8f60c10ebca3e98c711ada8d0fdbc1a3198a64d9"},
@@ -1729,14 +1647,6 @@ splunk-packaging-toolkit = [
 ]
 splunk-sdk = [
     {file = "splunk-sdk-1.6.16.tar.gz", hash = "sha256:b4963a983f1538686cf3f83f9e5ee5e48419cc71744fc8bc0f60f8b8576efb98"},
-]
-splunktalib = [
-    {file = "splunktalib-2.1.0-py3-none-any.whl", hash = "sha256:2345bc4f21df4a3c70077b3fb76b3959988700f12d2755951a42e81d2f487650"},
-    {file = "splunktalib-2.1.0.tar.gz", hash = "sha256:700585b36313065fa894f0960b347a3926ce17a4e8c8c0bc41e9b2a661153912"},
-]
-splunktaucclib = [
-    {file = "splunktaucclib-5.0.4-py3-none-any.whl", hash = "sha256:b250a15696c40149e665383d44d058399c47f9da2052a6a4e6bc1a4e485915c6"},
-    {file = "splunktaucclib-5.0.4.tar.gz", hash = "sha256:8f47a0830e58893f20d24f839656e9594475896d334de55d5d9c31d9a52a70a0"},
 ]
 text-unidecode = [
     {file = "text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93"},
