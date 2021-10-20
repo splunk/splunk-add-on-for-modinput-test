@@ -18,6 +18,13 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         elif self.customAction == "create":
             self.supportedArgs.addReqArg('file_path')
             self.supportedArgs.addReqArg('data')
+        elif self.customAction == "update":
+            self.supportedArgs.addReqArg('file_path')
+            self.supportedArgs.addReqArg('data')
+        elif self.customAction == 'delete_dir':
+            self.supportedArgs.addReqArg('dir_path')
+        elif self.customAction == 'is_dir':
+            self.supportedArgs.addReqArg('dir_path')
         return
 
     def handleCustom(self, confInfo):
@@ -27,6 +34,12 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.read_file(confInfo)
         elif self.customAction == 'create':
             self.create_file(confInfo)
+        elif self.customAction == 'update':
+            self.update_file(confInfo)
+        elif self.customAction == 'delete_dir':
+            self.delete_dir(confInfo)
+        elif self.customAction == 'is_dir':
+            self.is_dir(confInfo)
 
     def delete_file(self, confInfo):
         file_path = self.callerArgs.data['file_path'][0]
@@ -63,6 +76,33 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         with open(conf_file_path, "w") as conf_file_obj:
                 conf_file_obj.write(conf_file_data)
 
+    def update_file(self, confInfo):
+        conf_file_path = self.callerArgs.data['file_path'][0]
+        conf_file_data = self.callerArgs.data['data'][0]
+        path_to_local = "/".join(conf_file_path.split("/")[:-1])
+        if not os.path.exists(path_to_local):
+            os.makedirs(path_to_local)
+        with open(conf_file_path, "a") as conf_file_obj:
+                conf_file_obj.write(conf_file_data)
+
+    def is_dir(self, confInfo):
+        dir_path = self.callerArgs.data['dir_path'][0]
+        if os.path.exists(dir_path) and os.path.isdir(dir_path):
+            confInfo['success_message'] = ('positive_response', '{} is a directory.'.format(dir_path))
+        else:
+            confInfo['error_message'] = ('negative_response', '{} is not a direcotry'.format(dir_path))
+
+    def delete_dir(self, confInfo):
+        dir_path = self.callerArgs.data['dir_path'][0]
+        if os.path.exists(dir_path):
+            if os.path.isdir(dir_path):
+                shutil.rmtree(dir_path)
+                confInfo['success_message'] = ('success_message', 'Directory {} successfully deleted'.format(dir_path))
+            else:
+                confInfo['error_message'] = ('delete_error_message', '{} is not a direcotry'.format(dir_path))
+
+        else:
+            confInfo['error_message'] = ('delete_error_message', 'Directory {} not found'.format(dir_path))
 
 if __name__ == "__main__":
     admin.init(Splunk_TA_Modinput_Test, admin.CONTEXT_APP_AND_USER)
