@@ -8,6 +8,8 @@ import splunk.admin as admin
 import os
 import shutil
 import base64
+import subprocess
+
 class Splunk_TA_Modinput_Test(admin.MConfigHandler):
     def setup(self):
         if self.customAction == 'delete':
@@ -25,6 +27,8 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.supportedArgs.addReqArg('dir_path')
         elif self.customAction == 'is_dir':
             self.supportedArgs.addReqArg('dir_path')
+        elif self.customAction == 'execute':
+            self.supportedArgs.addReqArg('command')
         return
 
     def handleCustom(self, confInfo):
@@ -40,6 +44,8 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.delete_dir(confInfo)
         elif self.customAction == 'is_dir':
             self.is_dir(confInfo)
+        elif self.customAction == 'execute':
+            self.execute_command(confInfo)
 
     def delete_file(self, confInfo):
         file_path = self.callerArgs.data['file_path'][0]
@@ -103,6 +109,15 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
 
         else:
             confInfo['error_message'] = ('delete_error_message', 'Directory {} not found'.format(dir_path))
+
+    def execute_command(self, confInfo):
+        command = self.callerArgs.data['command'][0]
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        p.wait()
+        lines = p.stdout.readlines()
+        output = []
+        [output.append(str(line, "utf-8")) for line in lines]
+        confInfo['success_message'] = ('output', output)
 
 if __name__ == "__main__":
     admin.init(Splunk_TA_Modinput_Test, admin.CONTEXT_APP_AND_USER)
