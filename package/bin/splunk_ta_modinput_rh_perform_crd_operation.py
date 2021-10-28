@@ -29,6 +29,8 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.supportedArgs.addReqArg('dir_path')
         elif self.customAction == 'execute':
             self.supportedArgs.addReqArg('command')
+        elif self.customAction == 'is_file':
+            self.supportedArgs.addReqArg('file_path')
         return
 
     def handleCustom(self, confInfo):
@@ -46,6 +48,8 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
             self.is_dir(confInfo)
         elif self.customAction == 'execute':
             self.execute_command(confInfo)
+        elif self.customAction == 'is_file':
+            self.is_file(confInfo)
 
     def delete_file(self, confInfo):
         file_path = self.callerArgs.data['file_path'][0]
@@ -93,10 +97,13 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
 
     def is_dir(self, confInfo):
         dir_path = self.callerArgs.data['dir_path'][0]
-        if os.path.exists(dir_path) and os.path.isdir(dir_path):
-            confInfo['success_message'] = ('positive_response', '{} is a directory.'.format(dir_path))
+        if os.path.exists(dir_path):
+            if os.path.isdir(dir_path):
+                confInfo['success_message'] = ('positive_response', '{} is a directory.'.format(dir_path))
+            else:
+                confInfo['error_message'] = ('negative_response', '{} is not a direcotry'.format(dir_path))
         else:
-            confInfo['error_message'] = ('negative_response', '{} is not a direcotry'.format(dir_path))
+            confInfo['error_message'] = ('negative_response', 'Path {} does not exist.'.format(dir_path))
 
     def delete_dir(self, confInfo):
         dir_path = self.callerArgs.data['dir_path'][0]
@@ -118,6 +125,16 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
         output = []
         [output.append(str(line, "utf-8")) for line in lines]
         confInfo['success_message'] = ('output', output)
+
+    def is_file(self, confInfo):
+        file_path = self.callerArgs.data['file_path'][0]
+        if os.path.exists(file_path):
+            if os.path.isfile(file_path):
+                confInfo['success_message'] = ('positive_response', '{} is a regular file.'.format(file_path))
+            else:
+                confInfo['success_message'] = ('negative_response', '{} is not a regular file.'.format(file_path))
+        else:
+            confInfo['error_message'] = ('negative_response', 'Path {} does not exist.'.format(file_path))
 
 if __name__ == "__main__":
     admin.init(Splunk_TA_Modinput_Test, admin.CONTEXT_APP_AND_USER)
