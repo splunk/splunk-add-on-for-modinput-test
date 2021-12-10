@@ -1,3 +1,8 @@
+##
+## SPDX-FileCopyrightText: 2021 Splunk, Inc. <sales@splunk.com>
+## SPDX-License-Identifier: LicenseRef-Splunk-8-2021
+##
+##
 [tool.poetry]
 name = "splunk-add-on-for-modinput-test"
 version = "0.1.0"

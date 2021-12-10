@@ -45,10 +45,10 @@ Files: Dockerfile*
 Copyright: $YEAR $NAME <$CONTACT>
 License: LicenseRef-Splunk-8-2021
 
-Files: semtag
+Files: README*
 Copyright: $YEAR $NAME <$CONTACT>
 License: LicenseRef-Splunk-8-2021
 
-Files: README*
+Files: poetry.lock
 Copyright: $YEAR $NAME <$CONTACT>
 License: LicenseRef-Splunk-8-2021
