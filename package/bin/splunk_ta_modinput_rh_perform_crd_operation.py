@@ -1,8 +1,8 @@
-##
-## SPDX-FileCopyrightText: 2021 Splunk, Inc. <sales@splunk.com>
-## SPDX-License-Identifier: LicenseRef-Splunk-8-2021
-##
-##
+#
+# SPDX-FileCopyrightText: 2021 Splunk, Inc. <sales@splunk.com>
+# SPDX-License-Identifier: LicenseRef-Splunk-8-2021
+#
+#
 
 import base64
 import os
@@ -92,23 +92,21 @@ class Splunk_TA_Modinput_Test(admin.MConfigHandler):
                 "File {} not found.".format(file_path),
             )
 
-    def create_file(self, confInfo):
+    def _create_or_update_file(self, create=True):
         conf_file_path = self.callerArgs.data["file_path"][0]
         conf_file_data = self.callerArgs.data["data"][0]
         path_to_local = "/".join(conf_file_path.split("/")[:-1])
         if not os.path.exists(path_to_local):
             os.makedirs(path_to_local)
-        with open(conf_file_path, "w") as conf_file_obj:
+        flag = "w" if create else "a"
+        with open(conf_file_path, flag) as conf_file_obj:
             conf_file_obj.write(conf_file_data)
 
+    def create_file(self, confInfo):
+        self._create_or_update_file(True)
+
     def update_file(self, confInfo):
-        conf_file_path = self.callerArgs.data["file_path"][0]
-        conf_file_data = self.callerArgs.data["data"][0]
-        path_to_local = "/".join(conf_file_path.split("/")[:-1])
-        if not os.path.exists(path_to_local):
-            os.makedirs(path_to_local)
-        with open(conf_file_path, "a") as conf_file_obj:
-            conf_file_obj.write(conf_file_data)
+        self._create_or_update_file(False)
 
     def is_dir(self, confInfo):
         dir_path = self.callerArgs.data["dir_path"][0]
