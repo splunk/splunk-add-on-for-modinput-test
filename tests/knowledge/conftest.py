@@ -15,7 +15,6 @@ def pytest_configure(config):
     config.addinivalue_line("markers", "docker: Test search time only")
 
 
-
 @pytest.fixture(scope="session")
 def docker_compose_files(request):
     """
