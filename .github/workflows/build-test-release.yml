@@ -9,7 +9,14 @@ on:
   pull_request:
     branches:
       - "**"
-
+permissions:
+  actions: read
+  checks: write
+  contents: write
+  deployments: read
+  packages: write
+  pull-requests: read
+  statuses: write
 jobs:
   call-workflow:
     uses: splunk/addonfactory-workflow-addon-release/.github/workflows/reusable-build-test-release.yml@v4.19
