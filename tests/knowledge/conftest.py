@@ -31,3 +31,7 @@ def docker_compose_files(request):
     # LOGGER.info("docker-compose path: %s", docker_compose_path)
 
     return [docker_compose_path]
+
+def pytest_runtest_setup(item):
+    pytest.skip(f"Skipping {item.name}, tests not applicable to this add-on")
+

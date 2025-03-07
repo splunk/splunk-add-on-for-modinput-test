@@ -20,6 +20,8 @@ permissions:
 jobs:
   call-workflow:
     uses: splunk/addonfactory-workflow-addon-release/.github/workflows/reusable-build-test-release.yml@v4.19
+    with:
+      wfe-run-on-splunk-latest: true
     secrets:
       GH_TOKEN_ADMIN: ${{ secrets.GH_TOKEN_ADMIN }}
       SEMGREP_PUBLISH_TOKEN: ${{ secrets.SEMGREP_PUBLISH_TOKEN }}
