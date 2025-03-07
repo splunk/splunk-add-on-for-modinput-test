@@ -1,0 +1,2 @@
+check_for_trigger_stanza:
+  comment: 'ADDON-78824 Exception JIRA: https://splunk.atlassian.net/browse/ADDON-78824'
