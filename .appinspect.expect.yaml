@@ -1,2 +1,2 @@
 check_for_trigger_stanza:
-  comment: 'Need web trigger configuration to prevent forced restart'
+  comment: 'ADDON-78824 Exception JIRA: https://splunk.atlassian.net/browse/ADDON-78824'
