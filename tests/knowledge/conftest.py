@@ -32,6 +32,6 @@ def docker_compose_files(request):
 
     return [docker_compose_path]
 
+
 def pytest_runtest_setup(item):
     pytest.skip(f"Skipping {item.name}, tests not applicable to this add-on")
-

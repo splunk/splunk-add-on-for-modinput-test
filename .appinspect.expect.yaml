@@ -1,0 +1,6 @@
+check_for_trigger_stanza:
+  comment: 'Need web trigger configuration to prevent forced restart'
+check_for_builtin_functions:
+  comment: 'This TA provides access for testing purposes, it is used as testing tool only'
+check_for_file_and_directory_access:
+  comment: 'This TA provides access for testing purposes, it is used as testing tool only'
