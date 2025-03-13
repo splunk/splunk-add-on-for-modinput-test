@@ -22,8 +22,14 @@
     ],
   "plugins": [
     "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/exec",
+      {
+        "verifyReleaseCmd": "echo \"version=${nextRelease.version}\" >> $GITHUB_OUTPUT",
+        "successCmd": "echo \"new_release_published=${'true'}\" >> $GITHUB_OUTPUT",
+      }
+    ],
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/exec", {}],
     [
         "@semantic-release/git",
         {
@@ -31,6 +37,11 @@
           "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}",
         },
     ],
-    ["@semantic-release/github", {}],
+    [
+        "@semantic-release/github",
+        {
+          "successComment": false,
+        },
+    ],
   ]
 }
