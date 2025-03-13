@@ -42,7 +42,7 @@ services:
       - results:/home/circleci/work
 
   sc4s:
-    image: splunk/scs:${SC4S_VERSION}
+    image: ghcr.io/splunk/splunk-connect-for-syslog/container3:${SC4S_VERSION}
     hostname: sc4s
     #When this is enabled test_common will fail
     #    command: -det
@@ -57,7 +57,7 @@ services:
     tty: true
     environment:
       - SPLUNK_HEC_URL=https://splunk:8088
-      - SPLUNK_HEC_TOKEN=9b741d03-43e9-4164-908b-e09102327d22
+      - SPLUNK_HEC_TOKEN=${SPLUNK_HEC_TOKEN}
       - SC4S_SOURCE_TLS_ENABLE=no
       - SC4S_DEST_SPLUNK_HEC_TLS_VERIFY=no
       - SC4S_LISTEN_JUNIPER_NETSCREEN_TCP_PORT=5000
@@ -97,6 +97,7 @@ services:
         SPLUNK_APP_ID: ${SPLUNK_APP_ID}
         SPLUNK_APP_PACKAGE: ${SPLUNK_APP_PACKAGE}
         SPLUNK_VERSION: ${SPLUNK_VERSION}
+    platform: linux/amd64
     hostname: splunk
     ports:
       - "8000"
@@ -106,7 +107,7 @@ services:
     environment:
       - SPLUNK_PASSWORD=Chang3d!
       - SPLUNK_START_ARGS=--accept-license
-      - SPLUNK_HEC_TOKEN=9b741d03-43e9-4164-908b-e09102327d22
+      - SPLUNK_HEC_TOKEN=${SPLUNK_HEC_TOKEN}
       - TEST_SET=${TEST_SET}
       - RP_ENDPOINT=${RP_ENDPOINT}
       - RP_UUID=${RP_UUID}
@@ -155,6 +156,7 @@ services:
         SPLUNK_APP_ID: ${SPLUNK_APP_ID}
         SPLUNK_APP_PACKAGE: ${SPLUNK_APP_PACKAGE}
         SPLUNK_VERSION: ${SPLUNK_VERSION}
+    platform: linux/amd64
     hostname: uf
     ports:
       - "8089"
